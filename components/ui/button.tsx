@@ -5,16 +5,16 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-motus text-sm font-medium transition-transform transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-motus-primary/40 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60 active:translate-y-px",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-motus text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-motus-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-motus-bg disabled:pointer-events-none disabled:opacity-50 active:scale-95",
   {
     variants: {
       variant: {
         primary:
-          "bg-gradient-to-r from-motus-primary to-motus-accent text-white shadow-motusSoft hover:brightness-105",
+          "holo-gradient text-white shadow-lg shadow-motus-primary/50 hover:shadow-xl hover:shadow-motus-primary/60 hover:scale-105 shimmer",
         secondary:
-          "border border-motus-border bg-motus-bgSoft text-motus-text hover:bg-white",
+          "glass-strong border border-white/20 text-motus-textLight hover:border-white/40 hover:bg-white/10",
         ghost:
-          "text-motus-muted hover:bg-motus-bgSoft hover:text-motus-text border border-transparent"
+          "text-motus-textLight hover:glass-subtle border border-transparent hover:border-white/10"
       },
       size: {
         default: "h-11 px-5",

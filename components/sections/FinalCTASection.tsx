@@ -8,10 +8,10 @@ export function FinalCTASection() {
   return (
     <SectionShell id="final-cta" background="soft" className="text-center">
       <div className="mx-auto max-w-2xl space-y-5">
-        <h2 className="font-heading text-2xl font-semibold tracking-tight text-motus-text md:text-3xl">
-          {finalCtaCopy.title}
+        <h2 className="font-heading text-2xl font-semibold tracking-tight text-motus-textLight md:text-3xl">
+          <span className="text-holo">{finalCtaCopy.title}</span>
         </h2>
-        <p className="text-sm text-motus-muted md:text-base">
+        <p className="text-sm text-motus-textLight/70 md:text-base">
           {finalCtaCopy.subtitle}
         </p>
         <div className="pt-2">
@@ -26,7 +26,7 @@ export function FinalCTASection() {
             {finalCtaCopy.primaryCta}
           </Button>
         </div>
-        <p className="text-xs text-motus-muted">
+        <p className="text-xs text-motus-textLight/60">
           No hay promesas de resultados rápidos: sí un espacio serio para
           revisar cómo acompañas y cómo quieres seguir haciéndolo.
         </p>

@@ -10,7 +10,7 @@ import { Navbar } from "@/components/Navbar";
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-motus-bg text-motus-text">
+    <main className="min-h-screen text-motus-textLight">
       <Navbar />
       <HeroSection />
       <WhoSection />

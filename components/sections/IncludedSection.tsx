@@ -8,10 +8,10 @@ export function IncludedSection() {
     <SectionShell id="incluye">
       <div className="space-y-8">
         <div className="max-w-2xl">
-          <h2 className="font-heading text-2xl font-semibold tracking-tight text-motus-text md:text-3xl">
-            {includedCopy.title}
+          <h2 className="font-heading text-2xl font-semibold tracking-tight text-motus-textLight md:text-3xl">
+            <span className="text-holo">{includedCopy.title}</span>
           </h2>
-          <p className="mt-3 text-sm text-motus-muted md:text-base">
+          <p className="mt-3 text-sm text-motus-textLight/70 md:text-base">
             Todo lo que necesitas para integrar los modelos en tu práctica, sin perderte en teoría infinita.
           </p>
         </div>

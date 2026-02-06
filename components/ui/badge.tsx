@@ -8,7 +8,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {}
 export const Badge = ({ className, ...props }: BadgeProps) => (
   <span
     className={twMerge(
-      "inline-flex items-center rounded-full border border-motus-border bg-motus-bgSoft px-2.5 py-0.5 text-xs font-medium text-motus-muted",
+      "inline-flex items-center rounded-full glass-subtle border border-white/20 px-2.5 py-0.5 text-xs font-medium text-motus-textLight backdrop-blur-md",
       className
     )}
     {...props}

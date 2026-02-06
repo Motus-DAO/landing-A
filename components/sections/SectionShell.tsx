@@ -26,7 +26,7 @@ export function SectionShell({
       id={id}
       className={`${
         background === "soft"
-          ? "bg-motus-bgSoft/70 backdrop-blur-sm"
+          ? "glass-subtle"
           : "bg-transparent"
       }`}
     >
@@ -36,7 +36,7 @@ export function SectionShell({
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
         variants={sectionVariants}
-        className={`mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20 ${className}`}
+        className={`mx-auto max-w-5xl px-4 py-20 md:px-6 md:py-24 ${className}`}
       >
         {children}
       </motion.div>
