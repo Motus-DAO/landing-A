@@ -2,60 +2,117 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { CHECKOUT_URL, heroCopy } from "@/lib/copy";
+import { MOTION, listItemReveal } from "@/lib/motion";
+import {
+  Check,
+  Monitor,
+  GraduationCap,
+  Briefcase,
+  ClipboardCheck,
+  Shield,
+  Compass,
+  Lock,
+  Zap,
+  Users
+} from "lucide-react";
 
-const listVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.08 * i, duration: 0.4, ease: "easeOut" }
-  })
-};
+const journeySteps = [
+  { num: "01", label: "Evaluación inicial", desc: "Mapear tu punto de partida", icon: ClipboardCheck },
+  { num: "02", label: "Regulación y seguridad", desc: "Protocolos y marcos claros", icon: Shield },
+  { num: "03", label: "Diseño de ciclos y grupos", desc: "De sesión a proceso", icon: Compass }
+];
+
+const microProofIcons = [
+  { key: "secure", Icon: Lock },
+  { key: "access", Icon: Zap },
+  { key: "community", Icon: Users }
+];
 
 export function HeroSection() {
   return (
-    <section className="motus-bg">
-      <div className="mx-auto flex max-w-5xl flex-col gap-12 px-4 pb-28 pt-20 md:flex-row md:items-center md:gap-16 md:px-6 md:pt-24 md:pb-32">
-        <div className="flex-1">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-            className="space-y-6 text-white"
-          >
-            <Badge className="glass-strong border-white/30">
-              {heroCopy.eyebrow}
-            </Badge>
+    <section className="hero-bg relative">
+      <div className="hero-mesh" aria-hidden />
+      <div className="hero-noise" aria-hidden />
 
-            <div className="space-y-4">
-              <h1 className="font-heading text-3xl font-semibold tracking-tight text-white md:text-5xl md:leading-tight">
-                <span className="text-holo">{heroCopy.title}</span>
+      <div className="relative mx-auto flex max-w-5xl flex-col gap-10 px-4 pb-24 pt-16 sm:px-5 sm:pt-20 md:flex-row md:items-center md:gap-16 md:px-6 md:pb-32 md:pt-24 lg:gap-20">
+        <div className="flex-1 min-w-0">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: MOTION.duration.section, ease: MOTION.easeOut }}
+            className="space-y-5 sm:space-y-6"
+          >
+            <span className="inline-flex items-center rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-xs font-medium tracking-wide text-white/95 backdrop-blur-sm">
+              {heroCopy.eyebrow}
+            </span>
+
+            <div className="space-y-3 sm:space-y-4">
+              <h1
+                className="max-w-[18ch] text-[1.65rem] font-bold leading-[1.22] tracking-tight text-white drop-shadow-sm min-[360px]:text-[1.85rem] min-[430px]:text-[2rem] sm:text-3xl sm:leading-[1.18] md:text-4xl md:leading-[1.15] lg:text-[2.6rem] lg:leading-[1.12]"
+                style={{ textWrap: "balance" }}
+              >
+                {heroCopy.title}
               </h1>
-              <p className="max-w-xl text-base leading-relaxed text-white/90 md:text-lg">
+              <p className="max-w-xl text-[0.9375rem] leading-[1.55] text-white/92 sm:text-base md:text-lg md:leading-relaxed">
                 {heroCopy.subtitle}
               </p>
             </div>
 
-            <ul className="grid gap-2 text-sm text-white md:text-base">
+            {/* Trust bar: above fold, alta visibilidad */}
+            {heroCopy.microProof && heroCopy.microProof.length > 0 && (
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-white/20 bg-white/10 px-3.5 py-2.5 text-xs text-white/90 backdrop-blur-sm sm:gap-x-5 sm:text-sm">
+                {heroCopy.microProof.map((text, i) => {
+                  const { Icon } = microProofIcons[i] ?? microProofIcons[0];
+                  return (
+                    <span key={text} className="inline-flex items-center gap-2 font-medium">
+                      <Icon className="h-4 w-4 shrink-0 text-white" aria-hidden />
+                      {text}
+                    </span>
+                  );
+                })}
+              </div>
+            )}
+
+            <ul className="grid gap-2.5 text-sm text-white/95 sm:text-[0.9375rem] md:text-base md:leading-relaxed">
               {heroCopy.bullets.map((item, index) => (
                 <motion.li
                   key={item}
                   custom={index}
                   initial="hidden"
                   animate="visible"
-                  variants={listVariants}
-                  className="flex items-start gap-2"
+                  variants={listItemReveal}
+                  className="flex items-start gap-2.5"
                 >
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-white/80" />
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/25">
+                    <Check className="h-3 w-3 text-white" aria-hidden />
+                  </span>
                   <span>{item}</span>
                 </motion.li>
               ))}
             </ul>
 
-            <div className="flex flex-wrap items-center gap-3 pt-3">
+            <div className="flex flex-wrap gap-2 pt-0 text-xs text-white/85 md:text-sm">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm">
+                <Monitor className="h-3.5 w-3.5" />
+                Formación online y en diferido
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm">
+                <GraduationCap className="h-3.5 w-3.5" />
+                Módulos clínicos + supervisión
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm">
+                <Briefcase className="h-3.5 w-3.5" />
+                Pensado para consulta
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 pt-1 sm:pt-2">
               <Button
+                variant="hero"
+                size="lg"
+                showArrow
+                className="btn-hero-cta transition-all duration-200"
                 onClick={() => {
                   if (CHECKOUT_URL && CHECKOUT_URL !== "[[CHECKOUT_URL]]") {
                     window.location.href = CHECKOUT_URL;
@@ -65,56 +122,61 @@ export function HeroSection() {
                 {heroCopy.primaryCta}
               </Button>
               <Button
-                variant="secondary"
+                variant="heroSecondary"
+                className="transition-transform duration-200 active:scale-[0.98]"
                 onClick={() => {
                   const el = document.getElementById("temario");
-                  if (el) {
-                    el.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
               >
                 {heroCopy.secondaryCta}
               </Button>
             </div>
+
+            <p className="pt-0 text-xs text-white/70 sm:pt-1">
+              {heroCopy.urgencyLine}
+            </p>
           </motion.div>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-          className="flex-1"
+          transition={{ duration: MOTION.duration.section, ease: MOTION.easeOut, delay: 0.1 }}
+          className="flex-1 flex justify-center lg:justify-end"
         >
-          <div className="relative mx-auto h-64 w-full max-w-md rounded-motus-lg glass-strong border border-white/30 shadow-glow-primary md:h-72 overflow-hidden">
-            <div className="absolute inset-0 rounded-motus-lg bg-gradient-to-br from-motus-primary/20 via-motus-accent/15 via-motus-cyan/10 to-motus-blue/20" />
-            <div className="absolute inset-0 shimmer" />
-            <div className="relative flex h-full flex-col justify-between p-5 z-10">
-              <div className="space-y-2">
-                <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/70">
-                  Mapa del programa
-                </p>
-                <p className="font-heading text-lg font-semibold text-white">
-                  De desregulación a agencia compartida
-                </p>
-              </div>
-              <div className="space-y-2 text-xs text-white/80">
-                <div className="grid gap-1.5">
-                  <div className="flex items-center justify-between rounded-full glass-subtle border border-white/20 px-3 py-1.5 text-[11px] text-white backdrop-blur-sm">
-                    <span>Evaluación inicial</span>
-                    <span className="h-1.5 w-1.5 rounded-full bg-motus-primary glow-primary" />
-                  </div>
-                  <div className="flex items-center justify-between rounded-full glass-subtle border border-white/15 px-3 py-1.5 text-[11px] text-white backdrop-blur-sm">
-                    <span>Regulación y seguridad</span>
-                    <span className="h-1.5 w-1.5 rounded-full bg-motus-cyan glow-cyan" />
-                  </div>
-                  <div className="flex items-center justify-between rounded-full glass-subtle border border-white/10 px-3 py-1.5 text-[11px] text-white backdrop-blur-sm">
-                    <span>Diseño de ciclos y grupos</span>
-                    <span className="h-1.5 w-1.5 rounded-full bg-motus-accent glow-accent" />
-                  </div>
-                </div>
-                <p className="pt-2 text-[11px] text-white/70">
-                  Vista esquemática del recorrido que trabajaremos juntas en la formación.
-                </p>
+          <div className="card-hero-glass relative w-full max-w-md rounded-2xl overflow-hidden border border-white/40">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none" aria-hidden />
+            <div className="relative p-6 space-y-1.5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-motus-primary">
+                Mapa del programa
+              </p>
+              <p className="text-lg font-semibold text-motus-text">
+                De desregulación a agencia compartida
+              </p>
+            </div>
+            <div className="relative px-6 pb-6">
+              <div className="relative space-y-0">
+                {journeySteps.map((step, i) => {
+                  const Icon = step.icon;
+                  return (
+                    <div key={step.num} className="relative flex gap-4 pb-6 last:pb-0">
+                      {i < journeySteps.length - 1 && (
+                        <div className="absolute left-5 top-10 bottom-0 w-px bg-motus-primary/20" />
+                      )}
+                      <div className="icon-container">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div className="pt-0.5">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[11px] font-semibold text-motus-primary">{step.num}</span>
+                          <span className="text-sm font-medium text-motus-text">{step.label}</span>
+                        </div>
+                        <p className="mt-0.5 text-xs text-motus-muted">{step.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -123,4 +185,3 @@ export function HeroSection() {
     </section>
   );
 }
-

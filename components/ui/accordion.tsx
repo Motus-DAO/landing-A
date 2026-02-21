@@ -12,10 +12,10 @@ export const AccordionItem = ({
   ...props
 }: AccordionPrimitive.AccordionItemProps) => (
   <AccordionPrimitive.Item
-      className={twMerge(
-        "border-b border-white/10 last:border-b-0",
-        className
-      )}
+    className={twMerge(
+      "border-b border-motus-border last:border-b-0",
+      className
+    )}
     {...props}
   />
 );
@@ -28,13 +28,13 @@ export const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={twMerge(
-        "flex flex-1 items-center justify-between py-3 text-left text-sm font-medium text-motus-textLight transition-colors hover:text-holo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-motus-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-motus-bg rounded",
+        "flex flex-1 items-center justify-between py-3.5 text-left text-sm font-medium text-motus-text transition-colors duration-200 hover:text-motus-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-motus-primary/40 focus-visible:ring-offset-2 rounded",
         className
       )}
       {...props}
     >
       <span>{children}</span>
-      <ChevronDown className="ml-2 h-4 w-4 shrink-0 text-motus-textLight/60 transition-transform duration-200 data-[state=open]:rotate-180" />
+      <ChevronDown className="ml-2 h-4 w-4 shrink-0 text-motus-muted transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] data-[state=open]:rotate-180" aria-hidden />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
@@ -47,10 +47,10 @@ export const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-      className={twMerge(
-        "overflow-hidden text-sm text-motus-textLight/70 data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up",
-        className
-      )}
+    className={twMerge(
+      "overflow-hidden text-sm text-motus-text-secondary data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up",
+      className
+    )}
     {...props}
   >
     <div className="pb-4 pt-1">{children}</div>
@@ -58,4 +58,3 @@ export const AccordionContent = React.forwardRef<
 ));
 
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
-

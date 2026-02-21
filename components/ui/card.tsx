@@ -9,7 +9,7 @@ export const Card = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={twMerge(
-      "rounded-motus glass-strong border border-white/20 shadow-lg shadow-black/20 hover:border-white/30 transition-all duration-300",
+      "card-accent-top rounded-motus border border-motus-border bg-white shadow-card transition-all duration-200 hover:shadow-card-hover",
       className
     )}
     {...props}
@@ -29,7 +29,7 @@ export const CardTitle = ({
 }: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h3
     className={twMerge(
-      "font-heading text-lg font-semibold tracking-tight text-motus-textLight",
+      "text-lg font-semibold tracking-tight text-motus-text",
       className
     )}
     {...props}
@@ -42,7 +42,7 @@ export const CardDescription = ({
 }: React.HTMLAttributes<HTMLParagraphElement>) => (
   <p
     className={twMerge(
-      "text-sm leading-relaxed text-motus-textLight/70",
+      "text-sm leading-relaxed text-motus-text-secondary",
       className
     )}
     {...props}
@@ -53,6 +53,5 @@ export const CardContent = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={twMerge("text-sm text-motus-textLight/90", className)} {...props} />
+  <div className={twMerge("text-sm text-motus-text", className)} {...props} />
 );
-

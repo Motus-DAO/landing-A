@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: ["class"],
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,6 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" }
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" }
+        }
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.35s cubic-bezier(0.22, 1, 0.36, 1)",
+        "accordion-up": "accordion-up 0.35s cubic-bezier(0.22, 1, 0.36, 1)"
+      },
       borderRadius: {
         motus: "var(--motus-radius)",
         "motus-lg": "var(--motus-radius-lg)"
@@ -16,31 +29,27 @@ const config: Config = {
       colors: {
         motus: {
           primary: "rgb(var(--motus-primary) / <alpha-value>)",
-          accent: "rgb(var(--motus-accent) / <alpha-value>)",
-          cyan: "rgb(var(--motus-cyan) / <alpha-value>)",
-          blue: "rgb(var(--motus-blue) / <alpha-value>)",
-          magenta: "rgb(var(--motus-magenta) / <alpha-value>)",
+          "primary-hover": "rgb(var(--motus-primary-hover) / <alpha-value>)",
+          "primary-light": "rgb(var(--motus-primary-light) / <alpha-value>)",
+          "primary-subtle": "rgb(var(--motus-primary-subtle) / <alpha-value>)",
           text: "rgb(var(--motus-text) / <alpha-value>)",
-          textLight: "rgb(var(--motus-text-light) / <alpha-value>)",
+          "text-secondary": "rgb(var(--motus-text-secondary) / <alpha-value>)",
           muted: "rgb(var(--motus-muted) / <alpha-value>)",
           border: "rgb(var(--motus-border) / <alpha-value>)",
           bg: "rgb(var(--motus-bg) / <alpha-value>)",
-          bgSoft: "rgb(var(--motus-bg-soft) / <alpha-value>)",
-          glass: "rgb(var(--motus-glass-bg) / <alpha-value>)"
+          "bg-soft": "rgb(var(--motus-bg-soft) / <alpha-value>)"
         }
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        heading: ["Jura", "system-ui", "sans-serif"]
+        sans: ["Inter", "system-ui", "sans-serif"]
       },
       boxShadow: {
-        motusSoft: "0 10px 30px rgba(17, 24, 39, 0.08)",
-        "glow-primary": "0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3), 0 0 60px rgba(139, 92, 246, 0.1)",
-        "glow-accent": "0 0 20px rgba(236, 72, 153, 0.5), 0 0 40px rgba(236, 72, 153, 0.3), 0 0 60px rgba(236, 72, 153, 0.1)",
-        "glow-cyan": "0 0 20px rgba(34, 211, 238, 0.5), 0 0 40px rgba(34, 211, 238, 0.3), 0 0 60px rgba(34, 211, 238, 0.1)"
-      },
-      backdropBlur: {
-        xs: "2px"
+        soft: "0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04)",
+        card: "0 4px 12px rgba(0, 0, 0, 0.05)",
+        "card-hover": "0 8px 24px rgba(0, 0, 0, 0.08)",
+        "primary-soft": "0 4px 14px rgba(123, 47, 242, 0.18)",
+        glow: "0 0 40px -8px rgba(123, 47, 242, 0.25)",
+        "glow-sm": "0 0 24px -4px rgba(123, 47, 242, 0.2)"
       }
     }
   },
@@ -48,4 +57,3 @@ const config: Config = {
 };
 
 export default config;
-
