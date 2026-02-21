@@ -36,6 +36,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  font-family: var(--font-jura), system-ui, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
 }

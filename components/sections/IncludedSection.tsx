@@ -85,7 +85,7 @@ export function IncludedSection() {
               {ctaCopy.primary}
             </Button>
             <Button
-              variant="outline"
+              variant="secondary"
               size="lg"
               className="transition-transform duration-200 active:scale-[0.98]"
               onClick={() => {

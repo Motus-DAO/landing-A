@@ -1,5 +1,12 @@
 import "./globals.css";
 import type { ReactNode } from "react";
+import { Jura } from "next/font/google";
+
+const jura = Jura({
+  subsets: ["latin"],
+  variable: "--font-jura",
+  display: "swap"
+});
 
 export const metadata = {
   title: "MotusDAO Academia",
@@ -9,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" className={jura.variable}>
       <body className="min-h-screen bg-motus-bg text-motus-text antialiased">
         {children}
       </body>

@@ -49,7 +49,7 @@ export function HeroSection() {
 
             <div className="space-y-3 sm:space-y-4">
               <h1
-                className="max-w-[18ch] text-[1.65rem] font-bold leading-[1.22] tracking-tight text-white drop-shadow-sm min-[360px]:text-[1.85rem] min-[430px]:text-[2rem] sm:text-3xl sm:leading-[1.18] md:text-4xl md:leading-[1.15] lg:text-[2.6rem] lg:leading-[1.12]"
+                className="font-jura max-w-[18ch] text-[1.65rem] font-bold leading-[1.22] tracking-tight text-white drop-shadow-sm min-[360px]:text-[1.85rem] min-[430px]:text-[2rem] sm:text-3xl sm:leading-[1.18] md:text-4xl md:leading-[1.15] lg:text-[2.6rem] lg:leading-[1.12]"
                 style={{ textWrap: "balance" }}
               >
                 {heroCopy.title}
